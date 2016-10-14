@@ -16,7 +16,7 @@ namespace test_calc_2
             bool allright = false, go_on = true;
             Console.WriteLine("willkommen. It is test calculator, written by Evgenii Didin");
             Console.WriteLine("The input format is arg1 action arg2. For example 10divide4 will be 10 / 4. ");
-            Console.WriteLine("Calc operators: '+', '-', '/', 'div', 'mod', '*'");
+            Console.WriteLine("Calc operators: '+', '-', '/', 'div', 'mod', '*', '^'");
             Console.WriteLine("To exit print '0 0 0' ");
             while (go_on)
             {
@@ -60,6 +60,9 @@ namespace test_calc_2
                             break;
                         case "div":
                             res = Convert.ToInt32(a) / Convert.ToInt32(b);
+                            break;
+                        case "^":
+                            res = Math.Pow(a, b);
                             break;
                         case "0":
                             Console.WriteLine("Thanks for using my calc. See ya. Press an Key");
