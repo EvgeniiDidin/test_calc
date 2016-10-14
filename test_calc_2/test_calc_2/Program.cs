@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace test_calc_2
 {
-    class Program
+    public class Program
     {
-        static double Calculate(double a, double b, string todo)
+        public static double Calculate(double a, double b, string todo)
         {
             if ((todo == "/" | todo == "mod" | todo == "div") & b == 0)
             {
@@ -36,7 +36,8 @@ namespace test_calc_2
                         res = a % b;
                         break;
                     case "div":
-                        res = Convert.ToInt32(a) / Convert.ToInt32(b);
+                        double x = a / b;
+                        res = Convert.ToDouble(Convert.ToInt32(x));
                         break;
                     case "^":
                         res = Math.Pow(a, b);
