@@ -8,6 +8,47 @@ namespace test_calc_2
 {
     class Program
     {
+        static double Calculate(double a, double b, string todo)
+        {
+            if ((todo == "/" | todo == "mod" | todo == "div") & b == 0)
+            {
+                Console.WriteLine("Error: Divizion by zero!");
+                return 42;
+            }
+            else
+            {
+                double res = 0;
+                switch (todo)
+                {
+                    case "+":
+                        res = a + b;
+                        break;
+                    case "-":
+                        res = a - b;
+                        break;
+                    case "/":
+                        res = a / b;
+                        break;
+                    case "*":
+                        res = a * b;
+                        break;
+                    case "mod":
+                        res = a % b;
+                        break;
+                    case "div":
+                        res = Convert.ToInt32(a) / Convert.ToInt32(b);
+                        break;
+                    case "^":
+                        res = Math.Pow(a, b);
+                        break;
+
+                    default:
+                        Console.WriteLine("Wrong operator");
+                        break;
+                }
+                return res;
+            }
+        }
         static void Main(string[] args)
         {
             string input_line;
@@ -38,45 +79,24 @@ namespace test_calc_2
                 if ((in_vals[1] == "/" | in_vals[1] == "mod" | in_vals[1] == "div") & b == 0)
                 {
                     Console.WriteLine("Error: Divizion by zero!");
+                    allright = false;
+                }
+                else if (in_vals[1] == "0")
+                {
+                    Console.WriteLine("Thanks for using my calc. See ya. Press an Key");
+                    Console.ReadKey();
+                    return;
                 }
                 else
                 {
-                    switch (in_vals[1])
-                    {
-                        case "+":
-                            res = a + b;
-                            break;
-                        case "-":
-                            res = a - b;
-                            break;
-                        case "/":
-                            res = a / b;
-                            break;
-                        case "*":
-                            res = a * b;
-                            break;
-                        case "mod":
-                            res = a % b;
-                            break;
-                        case "div":
-                            res = Convert.ToInt32(a) / Convert.ToInt32(b);
-                            break;
-                        case "^":
-                            res = Math.Pow(a, b);
-                            break;
-                        case "0":
-                            Console.WriteLine("Thanks for using my calc. See ya. Press an Key");
-                            Console.ReadKey();
-                            return;
-                        default:
-                            Console.WriteLine("Wrong operator");
-                            break;
-                    }
+                    res = Calculate(a, b, in_vals[1]);
                     Console.WriteLine("result: " + res.ToString());
-
+                    allright = false;
                 }
-                allright = false;
+
+
             }
+
         }
     }
 }
